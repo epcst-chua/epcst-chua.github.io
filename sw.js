@@ -1,15 +1,15 @@
 const urlsToCache = [
   "/index.html",
-  "/images/icon-192.png", "/images/icon-512-maskable.png", "icon-512.png", "favicon.ico", "apple-touch-icon.png"
+  "images/icon-192.png", "images/icon-512-maskable.png", "images/icon-512.png", "images/favicon.ico", "images/apple-touch-icon.png"
 ];
 
 // This code executes in its own worker or thread
-self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open("pwa-assets").then(cache => {
-      return cache.addAll(urlsToCache);
-    })
-  );
+self.addEventListener("install", (event) => {
+  let cacheUrls = async () => {
+     const cache = await caches.open("pwa-assets");
+     return cache.addAll(urlsToCache);
+  };
+  event.waitUntil(cacheUrls());
 });
 
 self.addEventListener("activate", event => {
