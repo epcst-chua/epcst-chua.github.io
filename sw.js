@@ -1,5 +1,5 @@
 const urlsToCache = [
-  "/index.html",
+  "/",
   "images/icon-192.png", "images/icon-512-maskable.png", "images/icon-512.png", "images/favicon.ico", "images/apple-touch-icon.png"
 ];
 
